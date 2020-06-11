@@ -1,0 +1,8 @@
+import xml.etree.ElementTree as ET
+tree=ET.parse("sug.xml")
+root=tree.getroot()
+a=input(" enter name:")
+for x in root.findall('item'):
+    if a==x.find('name').text:
+        price=(x.find('price').text)
+        print(price)
