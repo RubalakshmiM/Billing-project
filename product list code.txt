@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-tree=ET.parse("sug.xml")
+tree=ET.parse("product list.xml")
 root=tree.getroot()
 a=input(" enter name:")
 for x in root.findall('item'):
