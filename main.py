@@ -6,22 +6,32 @@ root=tree.getroot()
 for child in root:
     itemlist.append(child.find('name').text)
     pricelist.append(child.find('price').text)
+dicti1={}
 dicti={}
 dicti = dict(zip(itemlist,pricelist))
 n=[]
-s=int(input(" enter the total item:"))
+s=int(input(" Enter the total item purchased :"))
 for i in range(0,s):
-      key=input(" enter the name:")
-      if key not in dicti:
-            x=input(" do yu want to add this item in dict (y/n)")
+      keyn=input(" Enter the item name:")
+      for key ,value in dicti.items():
+          if keyn == key:
+              dicti1.update({keyn:value})
+      if keyn not in dicti:
+            x=input(" This item is not in the list ,do yu want to add this item (y/n)")
             if x=='y':
-                   price=int(input(" enter the price you want to add for the item "))
-                   dicti.update({key: price})
+                   price=int(input(" Enter the price you want to add for the item "))
+                   dicti1.update({keyn: price})
             else:
                if x=='n':
                     print(" thankyou")
-            n.append(key)
-print(dicti)
+            n.append(keyn)
+bill=0
+for key,value in dicti1.items():
+    quantity=int(input(" The quantity of " +key+ " purchased is = "))
+    totalprice=int(quantity*int(value))
+    bill=bill+totalprice
+    print("Cost of single quantity of "+key+ " is = ",value, " and the totalprice of "+key+ " is =",totalprice)
+print(" Overall bill generated is ",bill)
 
 
 
